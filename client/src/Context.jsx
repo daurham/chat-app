@@ -1,23 +1,31 @@
-import React, { useMemo, useEffect, useContext, createContext } from 'react';
+import React, { useState, useMemo, useEffect, useContext, createContext } from 'react';
+import openSocket from 'socket.io-client';
 import App from './components/App';
 
-const contextData = createContext(/* defaultValue */); 
-export const useData = () => useContext(contextData); 
+const contextData = createContext(/* defaultValue */);
+export const useData = () => useContext(contextData);
 
 
 export default function Context() {
-	let textData = { text: 'Data from Context component' };	
 
-	const value = useMemo(() => ({ 
-		textData
-	 }), [/* upon change */]);
-  
-	return (
-		<>
-			<h1>My Context</h1>
-			<contextData.Provider value={value}>
-				<App />
-			</contextData.Provider>
-		</>
+	const [socket, setSocket] = useState();
+
+
+	useEffect(() => {
+		if (!socket) {
+			setSocket(openSocket('http://localhost:3000'));
+		}
+	}, []);
+
+
+	const value = useMemo(() => ({
+		socket,
+	}), [socket]);
+
+
+	return !socket ? null : (
+		<contextData.Provider value={value}>
+			<App />
+		</contextData.Provider>
 	);
 };

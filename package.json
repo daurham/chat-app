@@ -1,7 +1,7 @@
 {
-  "name": "FILL_ME_IN",
+  "name": "chat-app",
   "version": "1.0.0",
-  "description": "FILL_ME_IN",
+  "description": "chat-app",
   "scripts": {
     "start": "webpack -w",
     "server": "nodemon server/index.js",
@@ -15,9 +15,9 @@
   "author": "daurham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daurham/FILL_ME_IN/issues"
+    "url": "https://github.com/daurham/chat-app/issues"
   },
-  "homepage": "https://github.com/daurham/FILL_ME_IN#readme",
+  "homepage": "https://github.com/daurham/chat-app#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bluebird": "^3.7.2",
@@ -25,7 +25,9 @@
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.18.0",
